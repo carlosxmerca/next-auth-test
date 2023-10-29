@@ -1,6 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export default function ClientSideRoot(): any {
@@ -15,7 +16,7 @@ export default function ClientSideRoot(): any {
   };
 
   return (
-    <div className="bg-black h-[100vh] flex flex-col text-white p-4 text-black">
+    <div className="bg-black h-[100vh] flex flex-col text-white p-4 text-black items-center justify-center">
       <div>
         <h1 className="leading-loose text-[6rem] font-extrabold text-accent">
           Hi {session?.user?.name}!
@@ -28,6 +29,8 @@ export default function ClientSideRoot(): any {
         </button>
         {shown ? <pre>{JSON.stringify(session, null, 2)}</pre> : null}
       </div>
+      <br />
+      <Link href="/">Home</Link>
     </div>
   );
 }

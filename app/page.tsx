@@ -7,6 +7,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex w-full flex-row justify-around">
         <Link href="/api/auth/signin">Login</Link>
+        <Link href="/public/signin">Custom login</Link>
         <Link href="/protected">Protected</Link>
         <LogOut />
       </div>

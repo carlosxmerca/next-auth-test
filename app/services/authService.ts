@@ -10,21 +10,23 @@
 // let token = "SECRET";
 
 interface User {
-    id: string;
-    name: string;
+  id: string;
+  name: string;
 }
 
 type Token = string;
 
 export const authenticate = async (email: string, password: string) => {
-    let user = {
-        id: "1",
-        name: "Carlos",
-        email: "carlosxmerca@gmail.com",
-        image: "...",
-        secret: "SECRET"
-    };
+  let user = {
+    id: "1",
+    name: "Carlos",
+    email: "carlosxmerca@gmail.com",
+    image: "...",
+    secret: "SECRET",
+  };
 
-    console.log("Service is being used...");
-    return user;
-}
+  console.log("Service is being used...");
+
+  if (email == "123" && password == "123") return user;
+  else return undefined;
+};

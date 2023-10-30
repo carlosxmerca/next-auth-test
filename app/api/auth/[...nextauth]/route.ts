@@ -18,7 +18,7 @@ export const authOptions: AuthOptions = {
             credentials.password
           );
           if (typeof res !== "undefined") {
-            return { ...res, api: "holaaaa" };
+            return res;
           } else {
             return null;
           }
@@ -34,7 +34,21 @@ export const authOptions: AuthOptions = {
     // maxAge: 1 * 60, // 1 Min
     maxAge: 1 * 60 * 60, // 1 Hora
   },
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user, account, profile }) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (user) {
+        // Add REST API token
+        token.token = user.secret;
+      }
+      return token;
+    },
+    async session({ session, user, token }) {
+      // Add Rest API token from token to session
+      session.user.token = token.token as string;
+      return session;
+    },
+  },
   // This is needed for custom login
   pages: {
     signIn: "/public/signin",

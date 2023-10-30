@@ -8,8 +8,6 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token }) => {
-        console.log("Auth: ");
-        console.log(token);
         // TODO: add request to Rest API to check if token is valid
         return token !== null;
       },
